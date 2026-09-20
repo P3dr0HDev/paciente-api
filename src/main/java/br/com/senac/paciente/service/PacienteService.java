@@ -49,6 +49,8 @@ public class PacienteService {
     public Paciente atualizar(Long id, PacienteRequestDto paciente) {
         Optional<Paciente> pacienteResult = pacienteRepository.findById(id);
 
+        this.validarPaciente(paciente);
+
         if (pacienteResult.isPresent()) {
             Paciente pacientePersist = pacienteResult.get();
             pacientePersist.setNome(paciente.getNome());
